@@ -101,6 +101,7 @@ export default function Calculadora() {
             </View>
 
             <View style={style.viewCalculadora}>
+
                 <TouchableOpacity
                     style={[style.button, style.buttonAmarelo]}
                     onPress={
