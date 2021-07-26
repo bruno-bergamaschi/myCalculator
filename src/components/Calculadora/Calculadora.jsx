@@ -8,8 +8,8 @@ export default function Calculadora() {
     })
 
     const [input, setInput] = useState({
-        valorA: 0,
-        valorB: 0
+        valorA: '',
+        valorB: ''
     })
 
     const operacao = (operador) => {
@@ -63,12 +63,6 @@ export default function Calculadora() {
                     });
                     break;
 
-                case 'clear':
-                    setResultado({
-                        ...resultado, valor: 0
-                    });
-                    break;
-
                 default:
                     setResultado({
                         ...resultado, valor: 'Valores incorretos'
@@ -79,12 +73,18 @@ export default function Calculadora() {
                 ...resultado, valor: 'Informe os valores A e B'
             })
         }
+
     }
 
     const clearResult = () => {
+
         setResultado({
             ...resultado, valor: 0,
-        })
+        });
+
+        setInput({
+            ...input, valorA: '', valorB: ''
+        });
     }
 
     const handleInputChange = (parametro, value) => {
@@ -105,7 +105,7 @@ export default function Calculadora() {
                 <TouchableOpacity
                     style={[style.button, style.buttonAmarelo]}
                     onPress={
-                        ()=> operacao('+')
+                        () => operacao('+')
                     }
                 >
                     <Text style={style.text}>+</Text>
@@ -114,7 +114,7 @@ export default function Calculadora() {
                 <TouchableOpacity
                     style={[style.button, style.buttonAmarelo]}
                     onPress={
-                        ()=> operacao('-')
+                        () => operacao('-')
                     }
                 >
                     <Text style={style.text}>-</Text>
@@ -123,7 +123,7 @@ export default function Calculadora() {
                 <TouchableOpacity
                     style={[style.button, style.buttonAmarelo]}
                     onPress={
-                        ()=> operacao('*')
+                        () => operacao('*')
                     }
                 >
                     <Text style={style.text}>x</Text>
@@ -132,7 +132,7 @@ export default function Calculadora() {
                 <TouchableOpacity
                     style={[style.button, style.buttonAmarelo]}
                     onPress={
-                        ()=> operacao('/')
+                        () => operacao('/')
                     }
                 >
                     <Text style={style.text}>/</Text>
@@ -141,7 +141,7 @@ export default function Calculadora() {
                 <TouchableOpacity
                     style={[style.button, style.buttonCinza]}
                     onPress={
-                        ()=> operacao('%')
+                        () => operacao('%')
                     }
                 >
                     <Text style={style.text}>Mod</Text>
@@ -150,7 +150,7 @@ export default function Calculadora() {
                 <TouchableOpacity
                     style={[style.button, style.buttonCinza]}
                     onPress={
-                        ()=> operacao('a2')
+                        () => operacao('a2')
                     }
                 >
                     <Text style={style.text}>a²</Text>
@@ -159,7 +159,7 @@ export default function Calculadora() {
                 <TouchableOpacity
                     style={[style.button, style.buttonCinza]}
                     onPress={
-                        ()=> operacao('b2')
+                        () => operacao('b2')
                     }
                 >
                     <Text style={style.text}>b²</Text>
@@ -168,7 +168,7 @@ export default function Calculadora() {
                 <TouchableOpacity
                     style={[style.button, style.buttonCinza]}
                     onPress={
-                        ()=> operacao('aB')
+                        () => operacao('aB')
                     }
                 >
                     <Text style={style.text}>aB</Text>
@@ -192,6 +192,7 @@ export default function Calculadora() {
                     onChangeText={
                         (valor) => handleInputChange('valorA', Number(valor))
                     }
+                    value={input.valorA}
                 />
                 <TextInput
                     placeholder='Valor B'
@@ -200,6 +201,7 @@ export default function Calculadora() {
                     onChangeText={
                         (valor) => handleInputChange('valorB', Number(valor))
                     }
+                    value={input.valorB}
                 />
             </View>
 
