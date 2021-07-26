@@ -144,7 +144,7 @@ export default function Calculadora() {
                         ()=> operacao('%')
                     }
                 >
-                    <Text style={style.text}>%</Text>
+                    <Text style={style.text}>Mod</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
